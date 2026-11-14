@@ -1,9 +1,11 @@
+
 name: Scripted Pipeline
- 
+
 on:
   push:
     branches:
       - feature-testingbranch
+  workflow_dispatch:
 
 jobs:
   Greet:
@@ -13,6 +15,7 @@ jobs:
         run: echo 'Hello, World!'
 
   Build:
+    needs: Greet
     runs-on: ubuntu-latest
     steps:
       - name: Build
@@ -21,12 +24,9 @@ jobs:
           sleep 5s
 
   Results:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Results
         run: |
           echo "Job completed at $(date)"
-
-
-
-          
