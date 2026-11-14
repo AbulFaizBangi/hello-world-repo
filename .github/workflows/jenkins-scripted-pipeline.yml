@@ -2,25 +2,27 @@ name: Scripted Pipeline
 
 on:
   push:
-    branches: 
-    - feature-testingbranch
+    branches:
+      - feature-testingbranch
 
 jobs:
   Greet:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'Hello, World!'
-      
+      - name: Greet
+        run: echo 'Hello, World!'
+
   Build:
     runs-on: ubuntu-latest
-    steps: |-
-      - run: 
-      echo 'Pretending to build...'
-      sleep 5s
-      
+    steps:
+      - name: Build
+        run: |
+          echo 'Pretending to build...'
+          sleep 5s
+
   Results:
     runs-on: ubuntu-latest
     steps:
-      - run: echo |-
-        echo "Job completed at ${date}"
-        
+      - name: Results
+        run: |
+          echo "Job completed at $(date)"
