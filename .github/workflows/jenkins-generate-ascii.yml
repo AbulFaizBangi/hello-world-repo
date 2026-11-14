@@ -1,8 +1,9 @@
 name: Generate ASCII Artwork
 
 on:
-  - push:
-        - feature-testingbranch
+  push:
+    branches: 
+    - feature-testingbranch
         
   workflow_dispatch:
 
